@@ -17,3 +17,9 @@ app.get("/users", async (req, res) => {
   res.send(users);
 });
 
+app.post("/users/new", async (req, res) => {
+  const user = await new User({ name: req.body.name, job: req.body.job });
+  console.log(req.body);
+  await user.save();
+  res.send(user);
+});
