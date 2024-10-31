@@ -33,3 +33,8 @@ app.put("/user/:id", async (req, res) => {
   await user.save();
   res.send(user);
 });
+
+app.delete("/user/:id", async (req, res) => {
+  const user = await User.findByIdAndDelete(req.params.id);
+  res.send(user);
+});
