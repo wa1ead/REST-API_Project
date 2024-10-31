@@ -23,3 +23,13 @@ app.post("/users/new", async (req, res) => {
   await user.save();
   res.send(user);
 });
+
+app.put("/user/:id", async (req, res) => {
+  const user = await User.findOneAndUpdate(
+    { _id: req.params.id },
+    { name: req.body.name, job: req.body.job },
+    { new: true }
+  );
+  await user.save();
+  res.send(user);
+});
